@@ -7,7 +7,15 @@ class TreeNode:
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        pass
+        cur = root
+
+        while cur:
+            if p.val > cur.val and q.val > cur.val:
+                cur = cur.right
+            elif p.val < cur.val and q.val < cur.val:
+                cur = cur.left
+            else:
+                return cur
 
     def tree_travarsal(self,root):
         queue = [root]
@@ -27,4 +35,4 @@ if __name__ == "__main__":
     ,TreeNode(8,TreeNode(7),TreeNode(9)))
 
     print(s.tree_travarsal(root=data))
-    #print(s.lowestCommonAncestor(data))
+    print(s.lowestCommonAncestor(data,TreeNode(4),TreeNode(3)).val)
